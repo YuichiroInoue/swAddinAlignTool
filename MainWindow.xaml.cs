@@ -311,6 +311,9 @@ namespace swAddinAlignTool
             Warn = 0;
             bool bRet;
 
+            swModel.ClearSelection2(true);
+            bRet = swApp.SetUserPreferenceIntegerValue((int)swUserPreferenceIntegerValue_e.swStepAP, 214);
+
             bRet = swModelExt.SaveAs(fileName, (int)swSaveAsVersion_e.swSaveAsCurrentVersion, 0, exportPdf, Err, Warn);
             MessageBox.Show("Completed successfully");
         }
