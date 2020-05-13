@@ -25,9 +25,9 @@ namespace swAddinAlignTool
     {
         static SldWorks.SldWorks swApp;
         static ModelDoc2 swModel;
-        static string DIR = @"C:\Users\Prog001\Desktop\ver.1.0対象サンプルモデル\";
+        static string DIR = @"C:\honto-goe\";
         static string PARTNAME = "";
-        static string INFOPATH = @"C:\Users\Prog001\Desktop\ver.1.0対象サンプルモデル\set\size_info.csv";
+        static string INFOPATH = @"C:\honto-goe\size_info.csv";
 
         public MainWindow()
         {
@@ -44,7 +44,7 @@ namespace swAddinAlignTool
 
             string fileName = null;
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "step(*.step)|*.step";
+            ofd.Filter = "step(*.step)|*.step;*.stp|parasolid(*.x_t)|*.x_t";
             if(ofd.ShowDialog()==true)
             {
                 fileName = ofd.FileName;
@@ -274,7 +274,7 @@ namespace swAddinAlignTool
                 zMove = z1;
             }else
             {
-                zMove = z2;
+                zMove = -z2;
             }
 
             SelectionMgr swSelMgr = default(SelectionMgr);
