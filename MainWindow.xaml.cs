@@ -321,7 +321,8 @@ namespace swAddinAlignTool
         {
             if (swApp == null) { return; }
             ModelDocExtension swModelExt = swModel.Extension;
-            string fileName = path.Text+ @"set\"+PARTNAME;
+            string exportStepFileName = PARTNAME.Remove(PARTNAME.IndexOf(".")) + ".step";
+            string fileName = path.Text+ @"set\"+exportStepFileName;
             Directory.CreateDirectory(path.Text + "set");
 
             ExportPdfData exportPdf = default;
@@ -334,7 +335,14 @@ namespace swAddinAlignTool
             bRet = swApp.SetUserPreferenceIntegerValue((int)swUserPreferenceIntegerValue_e.swStepAP, 214);
 
             bRet = swModelExt.SaveAs(fileName, (int)swSaveAsVersion_e.swSaveAsCurrentVersion, 0, exportPdf, Err, Warn);
-            MessageBox.Show("Completed successfully");
+            if (bRet)
+            {
+                MessageBox.Show("Completed successfully");
+            }
+            else
+            {
+                MessageBox.Show("export incomplete");
+            }
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
