@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,11 +28,12 @@ namespace swAddinAlignTool
         static ModelDoc2 swModel;
         static string DIR = @"C:\honto-goe\";
         static string PARTNAME = "";
-        static string INFOPATH = @"C:\honto-goe\size_info.csv";
+        static string INFOPATH =DIR+ @"size_info.csv";
 
         public MainWindow()
         {
             InitializeComponent();
+            path.Text = DIR;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -93,6 +95,11 @@ namespace swAddinAlignTool
             return retAngle;
         }
 
+        /// <summary>
+        /// z align
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             if (swApp == null) { return; }
@@ -145,7 +152,7 @@ namespace swAddinAlignTool
             xyV[0] = Math.Round(faceNormalVector[0], 6);
             xyV[1] = Math.Round(faceNormalVector[1], 6);
             double[] yzV = new double[2];
-            yzV[0] = Math.Round(faceNormalVector[1], 6);
+            yzV[0] = Math.Round(faceNormalVector[0], 6);
             yzV[1] = Math.Round(faceNormalVector[2], 6);
             double[] yUnitV = new double[2] { 0, 1 };
             double[] zUnitV = new double[2] { 0, 1 };
@@ -168,6 +175,11 @@ namespace swAddinAlignTool
 
         }
 
+        /// <summary>
+        /// xy align
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             if (swApp == null) { return; }
@@ -245,6 +257,11 @@ namespace swAddinAlignTool
 
         }
 
+        /// <summary>
+        /// center align
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             if (swApp == null) { return; }
@@ -304,7 +321,9 @@ namespace swAddinAlignTool
         {
             if (swApp == null) { return; }
             ModelDocExtension swModelExt = swModel.Extension;
-            string fileName = DIR+ @"set\"+PARTNAME;
+            string fileName = path.Text+ @"set\"+PARTNAME;
+            Directory.CreateDirectory(path.Text + "set");
+
             ExportPdfData exportPdf = default;
             int Err, Warn;
             Err = 0;
