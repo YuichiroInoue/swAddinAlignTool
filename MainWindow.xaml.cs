@@ -26,7 +26,7 @@ namespace swAddinAlignTool
     {
         static SldWorks.SldWorks swApp;
         static ModelDoc2 swModel;
-        static string DIR = @"C:\honto-goe\";
+        static string DIR = System.Environment.GetFolderPath(System.Environment.SpecialFolder.DesktopDirectory)+@"\";
         static string PARTNAME = "";
         static string INFOPATH =DIR+ @"size_info.csv";
 
