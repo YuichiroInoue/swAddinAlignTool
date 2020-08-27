@@ -152,7 +152,7 @@ namespace swAddinAlignTool
             xyV[0] = Math.Round(faceNormalVector[0], 6);
             xyV[1] = Math.Round(faceNormalVector[1], 6);
             double[] yzV = new double[2];
-            yzV[0] = Math.Round(faceNormalVector[0], 6);
+            yzV[0] = Math.Round(faceNormalVector[1], 6);
             yzV[1] = Math.Round(faceNormalVector[2], 6);
             double[] yUnitV = new double[2] { 0, 1 };
             double[] zUnitV = new double[2] { 0, 1 };
