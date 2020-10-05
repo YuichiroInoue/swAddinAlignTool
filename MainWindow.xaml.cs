@@ -347,7 +347,11 @@ namespace swAddinAlignTool
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            if (swApp != null) { swApp.ExitApp(); }
+            if (swApp != null)
+            {
+                swApp.ExitApp();
+                swApp = null;
+            }
         }
     }
 }
